@@ -3,6 +3,7 @@ import {Text , View, Image } from 'react-native';
 
 const Card = (props) => {
     const {ViewStyle , ImageStyle} = styles;
+    
     return(
         <View style = {ViewStyle} > 
             <Image source = {props.imageSource} style = {ImageStyle}/>
@@ -18,8 +19,8 @@ const styles = {
         borderWidth : 2
     },
     ImageStyle : {
-        height: 300, 
-        width : 300
+        height: 350, 
+        width : 350
     }
     
 

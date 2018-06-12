@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   PixelRatio,
   Button,
-  CameraRoll
+  CameraRoll,
+  Dimensions
 } from 'react-native';
 import Card from './src/components/Card'
 import Header from './src/components/Header';
@@ -18,7 +19,7 @@ import ImagePicker from 'react-native-image-picker'
 import {captureScreen} from 'react-native-view-shot'
 
 
-
+var {height , width } = Dimensions.get('window')
 
 var capitureScreen = ()=>{
     
@@ -41,8 +42,8 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      ImageSource : 'null',
-      ImageSourceTwo : 'null',
+      ImageSource : null,
+      ImageSourceTwo : null,
       pikachu : './assets/pikachu.png',
       cameraRollUri : 'null'
     }
@@ -124,9 +125,9 @@ export default class App extends Component {
   render() {
     return (
       <View style = {styles.ViewStyle} > 
-        <Header placeholderText = {'Before'}/>
+        <Header placeholderText = {'Before'} deviceHeight = {height}/>
         <TouchableOpacity  onPress={this.selectPhotoTapped.bind(this)}>
-        <View style={styles.ImageContainer}>
+        <View style = {styles.ImageContainer}>
  
          { this.state.ImageSource === null ? <Text>Select a Photo</Text> :
         <Image style={styles.ImageContainer} source={this.state.ImageSource} />
@@ -144,7 +145,9 @@ export default class App extends Component {
 
 </View>
       </TouchableOpacity>
-      <Button title = 'Save' onPress = {capitureScreen}/>
+     <TouchableOpacity onPress = {capitureScreen} >
+      <Image source = {require('./assets/share.png')} style = {{height : 50, width : 50}} />
+      </TouchableOpacity>
       </View>
     );
   }
@@ -155,7 +158,9 @@ const styles = {
   ViewStyle : {
     justifyContent : 'center',
     alignItems : 'center',
-    marginBottom : 60
+    height : height ,
+    marginBottom : 60,
+    backgroundColor : '#EAEDED'
   },
 
   ImageContainer: {
@@ -163,10 +168,10 @@ const styles = {
     width: 250,
     height: 250,
     borderColor: '#9B9B9B',
-    borderWidth: 1 / PixelRatio.get(),
+    borderWidth: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#B3B3B3',
+    backgroundColor: '#E8F6F3',
     
   },
 
