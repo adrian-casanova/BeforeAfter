@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import {
+<<<<<<< HEAD
     Platform,
     StyleSheet,
     Text,
@@ -11,6 +12,18 @@ import {
     Button,
     CameraRoll,
     Dimensions
+=======
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  PixelRatio,
+  Button,
+  CameraRoll,
+  Dimensions
+>>>>>>> aa4ad5b6cec68c25c266b3eab068d43d5fedf506
 } from 'react-native';
 import Card from './src/components/Card'
 import Header from './src/components/Header';
@@ -19,6 +32,7 @@ import ImagePicker from 'react-native-image-picker'
 import { captureScreen } from 'react-native-view-shot'
 
 
+<<<<<<< HEAD
 var { height, width } = Dimensions.get('window')
 
 var capitureScreen = () => {
@@ -32,12 +46,28 @@ var capitureScreen = () => {
 
     );
 
+=======
+var {height , width } = Dimensions.get('window')
+
+var capitureScreen = ()=>{
+  alert('Screenshot Successful!')
+  captureScreen({
+      format: "png",
+      quality: 1,
+      }).then(
+      uri => CameraRoll.saveToCameraRoll(uri, 'photo'),
+      error => console.error("Oops, snapshot failed", error)
+       
+      );
+     
+>>>>>>> aa4ad5b6cec68c25c266b3eab068d43d5fedf506
 }
 
 
 
 
 export default class App extends Component {
+<<<<<<< HEAD
     constructor(props) {
         super(props);
 
@@ -47,6 +77,16 @@ export default class App extends Component {
             pikachu: './assets/pikachu.png',
             cameraRollUri: 'null'
         }
+=======
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ImageSource : null,
+      ImageSourceTwo : null,
+      pikachu : './assets/pikachu.png',
+      cameraRollUri : 'null'
+>>>>>>> aa4ad5b6cec68c25c266b3eab068d43d5fedf506
     }
 
 
@@ -119,6 +159,7 @@ export default class App extends Component {
                 });
             }
         });
+<<<<<<< HEAD
     }
 
 
@@ -151,10 +192,47 @@ export default class App extends Component {
             </View>
         );
     }
+=======
+      }
+    });
+  }
+
+
+  render() {
+    return (
+      <View style = {styles.ViewStyle} > 
+        <Header placeholderText = {'Before'} deviceHeight = {height}/>
+        <TouchableOpacity  onPress={this.selectPhotoTapped.bind(this)}>
+        <View style = {styles.ImageContainer}>
+ 
+         { this.state.ImageSource === null ? <Text>Select a Photo</Text> :
+        <Image style={styles.ImageContainer} source={this.state.ImageSource} />
+          }
+
+        </View>
+        </TouchableOpacity>
+        <Header placeholderText = {'After'}/>
+      <TouchableOpacity onPress={this.selectPhotoTappedTwo.bind(this)}>
+      <View style={styles.ImageContainer}>
+ 
+ { this.state.ImageSourceTwo === null ? <Text>Select a Photo</Text> :
+<Image style={styles.ImageContainer} source={this.state.ImageSourceTwo} />
+  }
+
+</View>
+      </TouchableOpacity>
+     <TouchableOpacity onPress = {capitureScreen} >
+      <Image source = {require('./assets/share.png')} style = {{height : 50, width : 50}} />
+      </TouchableOpacity>
+      </View>
+    );
+  }
+>>>>>>> aa4ad5b6cec68c25c266b3eab068d43d5fedf506
 }
 
 
 const styles = {
+<<<<<<< HEAD
     ViewStyle: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -174,6 +252,27 @@ const styles = {
         backgroundColor: '#E8F6F3',
 
     },
+=======
+  ViewStyle : {
+    justifyContent : 'center',
+    alignItems : 'center',
+    height : height ,
+    marginBottom : 60,
+    backgroundColor : '#EAEDED'
+  },
+
+  ImageContainer: {
+    borderRadius: 10,
+    width: 250,
+    height: 250,
+    borderColor: '#9B9B9B',
+    borderWidth: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E8F6F3',
+    
+  },
+>>>>>>> aa4ad5b6cec68c25c266b3eab068d43d5fedf506
 
 }
 
