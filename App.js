@@ -22,7 +22,7 @@ import {captureScreen} from 'react-native-view-shot'
 var {height , width } = Dimensions.get('window')
 
 var capitureScreen = ()=>{
-    
+  alert('Screenshot Successful!')
   captureScreen({
       format: "png",
       quality: 1,
